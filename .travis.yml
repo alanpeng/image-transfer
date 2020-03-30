@@ -15,10 +15,7 @@ script:
 - docker pull wise2c/pagoda:v1.2.0
 - docker tag wise2c/pagoda:v1.2.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/pagoda:v1.2.0
 
-
-
-deploy:
-  provider: script
+jobs:
   script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:${TRAVIS_BRANCH}
@@ -26,5 +23,3 @@ deploy:
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:${TRAVIS_BRANCH}
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/deploy-ui:v1.8
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/pagoda:v1.2.0
-    on:
-      all_branches: true
