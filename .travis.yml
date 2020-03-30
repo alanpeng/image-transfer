@@ -3,6 +3,9 @@ sudo: required
 services:
 - docker
 
+before_install:
+- while sleep 5m; do echo "=====[ $SECONDS seconds, still processing... ]====="; done &
+
 jobs:
   script:
   - docker pull wise2c/playbook:${TRAVIS_BRANCH}
