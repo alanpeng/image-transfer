@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+- docker
+
+script:
+- docker pull wise2c/playbook:v1.18
+- docker tag wise2c/playbook:v1.18 wise2c/playbook:v1.18.0
+
+deploy:
+  provider: script
+  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push wise2c/playbook:v1.18.0
+  on:
+    all_branches: true
