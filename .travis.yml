@@ -26,5 +26,5 @@ deploy:
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:${TRAVIS_BRANCH}
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/deploy-ui:v1.8
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/pagoda:v1.2.0
-    on:
-    all_branches: true
+  on:
+  all_branches: true
