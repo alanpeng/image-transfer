@@ -1,2 +1,2 @@
 # image-transfer
-transfer docker hub images to aliyun
+Transfer docker hub images to aliyun for Breeze project
