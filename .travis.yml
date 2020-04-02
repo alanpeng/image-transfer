@@ -8,23 +8,15 @@ before_install:
 
 jobs:
   script:
-  - docker pull wise2c/playbook:v1.15
-  - docker pull wise2c/playbook:v1.16
-  - docker pull wise2c/playbook:v1.17
-  - docker pull wise2c/playbook:v1.18
-  - docker tag wise2c/playbook:v1.15 wise2c/playbook:v1.15.11
-  - docker tag wise2c/playbook:v1.16 wise2c/playbook:v1.16.8
-  - docker tag wise2c/playbook:v1.17 wise2c/playbook:v1.17.4
-  - docker tag wise2c/playbook:v1.18 wise2c/playbook:v1.18.0
-  - docker tag wise2c/playbook:v1.15 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.15.11
-  - docker tag wise2c/playbook:v1.16 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.8
-  - docker tag wise2c/playbook:v1.17 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.4
+  - docker pull wise2c/playbook:v1.15.11
+  - docker pull wise2c/playbook:v1.16.8
+  - docker pull wise2c/playbook:v1.17.4
+  - docker pull wise2c/playbook:v1.18.0
+  - docker tag wise2c/playbook:v1.15.11 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.15.11
+  - docker tag wise2c/playbook:v1.16.8 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.8
+  - docker tag wise2c/playbook:v1.17.4 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.4
   - docker tag wise2c/playbook:v1.18 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.0
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-  - docker push wise2c/playbook:v1.15.11
-  - docker push wise2c/playbook:v1.16.8
-  - docker push wise2c/playbook:v1.17.4
-  - docker push wise2c/playbook:v1.18.0
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.15.11
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.8
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.4
