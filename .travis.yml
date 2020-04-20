@@ -8,16 +8,6 @@ before_install:
 
 jobs:
   script:
-  - docker pull wise2c/playbook:v1.16
-  - docker pull wise2c/playbook:v1.17
-  - docker pull wise2c/playbook:v1.18
-  - docker tag wise2c/playbook:v1.16 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16
-  - docker tag wise2c/playbook:v1.17 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17
-  - docker tag wise2c/playbook:v1.18 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18
   - docker pull wise2c/yum-repo:v1.16.9
   - docker pull wise2c/yum-repo:v1.17.5
   - docker pull wise2c/yum-repo:v1.18.2
