@@ -8,19 +8,21 @@ before_install:
 
 jobs:
   script:
-  - docker pull wise2c/playbook:${TRAVIS_BRANCH}
-  - docker tag wise2c/playbook:${TRAVIS_BRANCH} registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:${TRAVIS_BRANCH}
-  - docker pull wise2c/yum-repo:${TRAVIS_BRANCH}
-  - docker tag wise2c/yum-repo:${TRAVIS_BRANCH} registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:${TRAVIS_BRANCH}
-  - docker pull wise2c/apt-source:${TRAVIS_BRANCH}
-  - docker tag wise2c/apt-source:${TRAVIS_BRANCH} registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:${TRAVIS_BRANCH}
-  - docker pull wise2c/deploy-ui:v1.8
-  - docker tag wise2c/deploy-ui:v1.8 registry.cn-shenzhen.aliyuncs.com/breeze-project/deploy-ui:v1.8
-  - docker pull wise2c/pagoda:v1.2.0
-  - docker tag wise2c/pagoda:v1.2.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/pagoda:v1.2.0
+  - docker pull wise2c/playbook:v1.18
+  - docker pull wise2c/playbook:v1.17
+  - docker pull wise2c/playbook:v1.16
+  - docker tag wise2c/playbook:v1.18 wise2c/playbook:v1.18.5
+  - docker tag wise2c/playbook:v1.17 wise2c/playbook:v1.17.8
+  - docker tag wise2c/playbook:v1.16 wise2c/playbook:v1.16.12
+  - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+  - docker push wise2c/playbook:v1.18.5
+  - docker push wise2c/playbook:v1.17.8
+  - docker push wise2c/playbook:v1.16.12
+
+  - docker tag wise2c/playbook:v1.18.5 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.5
+  - docker tag wise2c/playbook:v1.17.8 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.8
+  - docker tag wise2c/playbook:v1.16.12 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.12
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:${TRAVIS_BRANCH}
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:${TRAVIS_BRANCH}
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:${TRAVIS_BRANCH}
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/deploy-ui:v1.8
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/pagoda:v1.2.0
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.5
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.8
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.12
