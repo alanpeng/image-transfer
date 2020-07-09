@@ -8,21 +8,25 @@ before_install:
 
 jobs:
   script:
-  - docker pull wise2c/playbook:v1.18
-  - docker pull wise2c/playbook:v1.17
-  - docker pull wise2c/playbook:v1.16
-  - docker tag wise2c/playbook:v1.18 wise2c/playbook:v1.18.5
-  - docker tag wise2c/playbook:v1.17 wise2c/playbook:v1.17.8
-  - docker tag wise2c/playbook:v1.16 wise2c/playbook:v1.16.12
-  - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-  - docker push wise2c/playbook:v1.18.5
-  - docker push wise2c/playbook:v1.17.8
-  - docker push wise2c/playbook:v1.16.12
+  - docker pull istio/examples-bookinfo-details-v1:1.15.1
+  - docker pull istio/examples-bookinfo-ratings-v1:1.15.1
+  - docker pull istio/examples-bookinfo-reviews-v1:1.15.1
+  - docker pull istio/examples-bookinfo-reviews-v2:1.15.1
+  - docker pull istio/examples-bookinfo-reviews-v3:1.15.1
+  - docker pull istio/examples-bookinfo-productpage-v1:1.15.1
 
-  - docker tag wise2c/playbook:v1.18.5 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.5
-  - docker tag wise2c/playbook:v1.17.8 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.8
-  - docker tag wise2c/playbook:v1.16.12 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.12
+  - docker tag istio/examples-bookinfo-details-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-details-v1:1.15.1
+  - docker tag istio/examples-bookinfo-ratings-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-ratings-v1:1.15.1
+  - docker tag istio/examples-bookinfo-reviews-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v1:1.15.1
+  - docker tag istio/examples-bookinfo-reviews-v2:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v2:1.15.1
+  - docker tag istio/examples-bookinfo-reviews-v3:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v3:1.15.1
+  - docker tag istio/examples-bookinfo-productpage-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-productpage-v1:1.15.1
+
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.5
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.8
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.12
+
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-details-v1:1.15.1
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-ratings-v1:1.15.1
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v1:1.15.1
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v2:1.15.1
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v3:1.15.1
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-productpage-v1:1.15.1
