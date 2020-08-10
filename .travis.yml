@@ -19,16 +19,16 @@ jobs:
   #- docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.17.9
   #- docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.16.13
 
-  - docker pull wise2c/playbook:v1.18.6
-  - docker pull wise2c/playbook:v1.17.9
-  - docker pull wise2c/playbook:v1.16.13
-  - docker tag wise2c/playbook:v1.18.6 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.6
-  - docker tag wise2c/playbook:v1.17.9 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.9
-  - docker tag wise2c/playbook:v1.16.13 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.13
+  - docker pull wise2c/playbook:v1.18
+  #- docker pull wise2c/playbook:v1.17.9
+  #- docker pull wise2c/playbook:v1.16.13
+  - docker tag wise2c/playbook:v1.18 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18
+  #- docker tag wise2c/playbook:v1.17.9 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.9
+  #- docker tag wise2c/playbook:v1.16.13 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.13
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.6
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.9
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.13
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18
+  #- docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.9
+  #- docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16.13
 
   #- docker pull wise2c/apt-source:v1.18.6
   #- docker pull wise2c/apt-source:v1.17.9
