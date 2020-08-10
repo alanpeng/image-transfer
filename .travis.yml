@@ -8,25 +8,25 @@ before_install:
 
 jobs:
   script:
-  - docker pull istio/examples-bookinfo-details-v1:1.15.1
-  - docker pull istio/examples-bookinfo-ratings-v1:1.15.1
-  - docker pull istio/examples-bookinfo-reviews-v1:1.15.1
-  - docker pull istio/examples-bookinfo-reviews-v2:1.15.1
-  - docker pull istio/examples-bookinfo-reviews-v3:1.15.1
-  - docker pull istio/examples-bookinfo-productpage-v1:1.15.1
+  - docker pull istio/examples-bookinfo-details-v1:1.16.2
+  - docker pull istio/examples-bookinfo-ratings-v1:1.16.2
+  - docker pull istio/examples-bookinfo-reviews-v1:1.16.2
+  - docker pull istio/examples-bookinfo-reviews-v2:1.16.2
+  - docker pull istio/examples-bookinfo-reviews-v3:1.16.2
+  - docker pull istio/examples-bookinfo-productpage-v1:1.16.2
 
-  - docker tag istio/examples-bookinfo-details-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-details-v1:1.15.1
-  - docker tag istio/examples-bookinfo-ratings-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-ratings-v1:1.15.1
-  - docker tag istio/examples-bookinfo-reviews-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v1:1.15.1
-  - docker tag istio/examples-bookinfo-reviews-v2:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v2:1.15.1
-  - docker tag istio/examples-bookinfo-reviews-v3:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v3:1.15.1
-  - docker tag istio/examples-bookinfo-productpage-v1:1.15.1 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-productpage-v1:1.15.1
+  - docker tag istio/examples-bookinfo-details-v1:1.16.2 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-details-v1:1.16.2
+  - docker tag istio/examples-bookinfo-ratings-v1:1.16.2 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-ratings-v1:1.16.2
+  - docker tag istio/examples-bookinfo-reviews-v1:1.16.2 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v1:1.16.2
+  - docker tag istio/examples-bookinfo-reviews-v2:1.16.2 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v2:1.16.2
+  - docker tag istio/examples-bookinfo-reviews-v3:1.16.2 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v3:1.16.2
+  - docker tag istio/examples-bookinfo-productpage-v1:1.16.2 registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-productpage-v1:1.16.2
 
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
 
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-details-v1:1.15.1
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-ratings-v1:1.15.1
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v1:1.15.1
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v2:1.15.1
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v3:1.15.1
-  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-productpage-v1:1.15.1
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-details-v1:1.16.2
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-ratings-v1:1.16.2
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v1:1.16.2
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v2:1.16.2
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-reviews-v3:1.16.2
+  - docker push registry.cn-shenzhen.aliyuncs.com/breeze-demo/examples-bookinfo-productpage-v1:1.16.2
