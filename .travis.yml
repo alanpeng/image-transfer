@@ -28,6 +28,7 @@ jobs:
   - docker pull wise2c/playbook:v1.17
   - docker pull wise2c/playbook:v1.16
   - docker tag wise2c/playbook:v1.19 wise2c/playbook:v1.19.0
+  - docker tag wise2c/playbook:v1.19 wise2c/playbook:v1.19.0.1
   - docker tag wise2c/playbook:v1.19 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.0
   - docker tag wise2c/playbook:v1.19 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.0.1  
   - docker tag wise2c/playbook:v1.18 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18
@@ -35,6 +36,7 @@ jobs:
   - docker tag wise2c/playbook:v1.16 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.16
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
   - docker push wise2c/playbook:v1.19.0
+  - docker push wise2c/playbook:v1.19.0.1
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.0.1
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.0
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18
