@@ -49,4 +49,3 @@ jobs:
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.5
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.13
   - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.17.15
-  
