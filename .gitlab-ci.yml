@@ -1,0 +1,22 @@
+build_image:
+  image: docker:git
+  services:
+    - docker:dind
+  script:
+    - docker pull wise2c/playbook:${CI_COMMIT_REF_NAME}
+    - docker tag wise2c/playbook:${CI_COMMIT_REF_NAME} registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:${CI_COMMIT_REF_NAME}
+    - docker pull wise2c/yum-repo:${CI_COMMIT_REF_NAME}
+    - docker tag wise2c/yum-repo:${CI_COMMIT_REF_NAME} registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:${CI_COMMIT_REF_NAME}
+    - docker pull wise2c/apt-source:${CI_COMMIT_REF_NAME}
+    - docker tag wise2c/apt-source:${CI_COMMIT_REF_NAME} registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:${CI_COMMIT_REF_NAME}
+    - docker pull wise2c/deploy-ui:v1.8
+    - docker tag wise2c/deploy-ui:v1.8 registry.cn-shenzhen.aliyuncs.com/breeze-project/deploy-ui:v1.8
+    - docker pull wise2c/pagoda:v1.2.0
+    - docker tag wise2c/pagoda:v1.2.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/pagoda:v1.2.0
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:${CI_COMMIT_REF_NAME}
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:${CI_COMMIT_REF_NAME}
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:${CI_COMMIT_REF_NAME}
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/deploy-ui:v1.8
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/pagoda:v1.2.0
+  when: always
