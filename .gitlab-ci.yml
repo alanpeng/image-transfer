@@ -3,14 +3,46 @@ build_image:
   services:
     - docker:dind
   script:
-    - docker pull wise2c/playbook:v1.20
-    - docker pull wise2c/playbook:v1.19
-    - docker pull wise2c/playbook:v1.18
-    - docker tag wise2c/playbook:v1.20 wise2c/playbook:v1.20.5
-    - docker tag wise2c/playbook:v1.19 wise2c/playbook:v1.19.9
-    - docker tag wise2c/playbook:v1.18 wise2c/playbook:v1.18.17
-    - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-    - docker push wise2c/playbook:v1.20.5
-    - docker push wise2c/playbook:v1.19.9
-    - docker push wise2c/playbook:v1.18.17
+    - docker pull wise2c/playbook:v1.21.0
+    - docker pull wise2c/playbook:v1.20.5
+    - docker pull wise2c/playbook:v1.19.9
+    - docker pull wise2c/playbook:v1.18.17
+    - docker tag wise2c/playbook:v1.21.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.21.0
+    - docker tag wise2c/playbook:v1.20.5 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.20.5
+    - docker tag wise2c/playbook:v1.19.9 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.9
+    - docker tag wise2c/playbook:v1.18.17 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.17
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.21.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.20.5
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.9
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.17
+    
+    - docker pull wise2c/yum-repo:v1.21.0
+    - docker pull wise2c/yum-repo:v1.20.5
+    - docker pull wise2c/yum-repo:v1.19.9
+    - docker pull wise2c/yum-repo:v1.18.17
+    - docker tag wise2c/yum-repo:v1.21.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.21.0
+    - docker tag wise2c/yum-repo:v1.20.5 registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.20.5
+    - docker tag wise2c/yum-repo:v1.19.9 registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.19.9
+    - docker tag wise2c/yum-repo:v1.18.17 registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.18.17
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.21.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.20.5
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.19.9
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/yum-repo:v1.18.17
+
+    - docker pull wise2c/apt-source:v1.21.0
+    - docker pull wise2c/apt-source:v1.20.5
+    - docker pull wise2c/apt-source:v1.19.9
+    - docker pull wise2c/apt-source:v1.18.17
+    - docker tag wise2c/apt-source:v1.21.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.21.0
+    - docker tag wise2c/apt-source:v1.20.5 registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.20.5
+    - docker tag wise2c/apt-source:v1.19.9 registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.19.9
+    - docker tag wise2c/apt-source:v1.18.17 registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.18.17
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.21.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.20.5
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.19.9
+    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/apt-source:v1.18.17
+
   when: always
