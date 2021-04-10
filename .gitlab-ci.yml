@@ -3,21 +3,9 @@ build_image:
   services:
     - docker:dind
   script:
-    - docker pull k8s.gcr.io/conformance:v1.21.0
-    - docker pull sonobuoy/systemd-logs:v0.3
-    - docker pull sonobuoy/sonobuoy:v0.50.0
-    - docker tag k8s.gcr.io/conformance:v1.21.0 wise2c/conformance:v1.21.0
-    - docker tag sonobuoy/systemd-logs:v0.3 wise2c/systemd-logs:v0.3
-    - docker tag sonobuoy/sonobuoy:v0.50.0 wise2c/sonobuoy:v0.50.0
-    - docker tag k8s.gcr.io/conformance:v1.21.0 registry.cn-shenzhen.aliyuncs.com/conformance/conformance:v1.21.0
-    - docker tag sonobuoy/systemd-logs:v0.3 registry.cn-shenzhen.aliyuncs.com/conformance/systemd-logs:v0.3 
-    - docker tag sonobuoy/sonobuoy:v0.50.0 registry.cn-shenzhen.aliyuncs.com/conformance/sonobuoy:v0.50.0
+    - wget https://github.com/vmware-tanzu/sonobuoy/releases/download/v0.50.0/sonobuoy_0.50.0_linux_amd64.tar.gz
+    - tar zxvf sonobuoy_0.50.0_linux_amd64.tar.gz
+    - bash sonobuoy images pull
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-    - docker push wise2c/conformance:v1.21.0
-    - docker push wise2c/systemd-logs:v0.3
-    - docker push wise2c/sonobuoy:v0.50.0
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/conformance:v1.21.0
-    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/systemd-logs:v0.3
-    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/sonobuoy:v0.50.0
   when: always
