@@ -3,16 +3,16 @@ build_image:
   services:
     - docker:dind
   script:
-    - docker pull wise2c/playbook:v1.21.0
+#    - docker pull wise2c/playbook:v1.21.0
     - docker pull wise2c/playbook:v1.20.5
     - docker pull wise2c/playbook:v1.19.9
     - docker pull wise2c/playbook:v1.18.17
-    - docker tag wise2c/playbook:v1.21.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.21.0
+#    - docker tag wise2c/playbook:v1.21.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.21.0
     - docker tag wise2c/playbook:v1.20.5 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.20.5
     - docker tag wise2c/playbook:v1.19.9 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.9
     - docker tag wise2c/playbook:v1.18.17 registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.17
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.21.0
+#    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.21.0
     - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.20.5
     - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.19.9
     - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbook:v1.18.17
