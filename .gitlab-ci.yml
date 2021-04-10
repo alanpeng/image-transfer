@@ -3,8 +3,9 @@ build_image:
   services:
     - docker:dind
   script:
-    - wget https://github.com/vmware-tanzu/sonobuoy/releases/download/v0.50.0/sonobuoy_0.50.0_linux_amd64.tar.gz
-    - tar zxvf sonobuoy_0.50.0_linux_amd64.tar.gz
+    - apk add --no-cache curl wget bash bzip2
+    - bash wget https://github.com/vmware-tanzu/sonobuoy/releases/download/v0.50.0/sonobuoy_0.50.0_linux_amd64.tar.gz
+    - bash tar zxvf sonobuoy_0.50.0_linux_amd64.tar.gz
     - bash sonobuoy images pull
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
