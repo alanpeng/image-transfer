@@ -6,11 +6,11 @@ build_image:
     - docker pull k8s.gcr.io/conformance:v1.21.0
     - docker pull sonobuoy/systemd-logs:v0.3
     - docker pull sonobuoy/sonobuoy:v0.50.0
-    - docker tag k8s.gcr.io/conformance:v1.21.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/conformance:v1.21.0
-    - docker tag sonobuoy/systemd-logs:v0.3 registry.cn-shenzhen.aliyuncs.com/breeze-project/systemd-logs:v0.3 
-    - docker tag sonobuoy/sonobuoy:v0.50.0 registry.cn-shenzhen.aliyuncs.com/breeze-project/sonobuoy:v0.50.0
+    - docker tag k8s.gcr.io/conformance:v1.21.0 registry.cn-shenzhen.aliyuncs.com/conformance/conformance:v1.21.0
+    - docker tag sonobuoy/systemd-logs:v0.3 registry.cn-shenzhen.aliyuncs.com/conformance/systemd-logs:v0.3 
+    - docker tag sonobuoy/sonobuoy:v0.50.0 registry.cn-shenzhen.aliyuncs.com/conformance/sonobuoy:v0.50.0
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
-    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/playbmnce:v1.21.0
-    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/systemd-logs:v0.3
-    - docker push registry.cn-shenzhen.aliyuncs.com/breeze-project/sonobuoy:v0.50.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/playbmnce:v1.21.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/systemd-logs:v0.3
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/sonobuoy:v0.50.0
   when: always
