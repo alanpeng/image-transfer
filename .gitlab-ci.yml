@@ -3,7 +3,7 @@ build_image:
   services:
     - docker:dind
   script:
-    - apk add --no-cache curl wget bash bzip2 awk
+    - apk add --no-cache curl wget bash bzip2
     - docker pull  k8s.gcr.io/conformance:v1.21.0 
     - docker pull  k8s.gcr.io/conformance:v1.21.0 
     - docker pull  sonobuoy/sonobuoy:v0.50.0     
