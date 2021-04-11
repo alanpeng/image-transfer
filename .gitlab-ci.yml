@@ -47,6 +47,7 @@ build_image:
     
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
+    
     - docker push wise2c/conformance:all-in-one
     - docker push registry.cn-shenzhen.aliyuncs.com/conformance/conformance:all-in-one
     
