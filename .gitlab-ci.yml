@@ -25,7 +25,7 @@ build_image:
     - docker pull  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/nonewprivs:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/sample-apiserver:1.17 
-    - docker pull  invalid.com/invalid/alpine:3.1 
+    # - docker pull  invalid.com/invalid/alpine:3.1 
     - docker pull  gcr.io/kubernetes-e2e-test-images/ipc-utils:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/regression-issue-74839-amd64:1.0 
     - docker pull  k8s.gcr.io/e2e-test-images/agnhost:2.20 
