@@ -3,7 +3,7 @@ build_image:
   services:
     - docker:dind
   script:
-    - apk add --no-cache curl wget bash bzip2
+    - apk add --no-cache curl wget bash bzip2 awk
     - docker pull  k8s.gcr.io/conformance:v1.21.0 
     - docker pull  k8s.gcr.io/conformance:v1.21.0 
     - docker pull  sonobuoy/sonobuoy:v0.50.0     
@@ -40,12 +40,14 @@ build_image:
     - docker pull  k8s.gcr.io/sig-storage/nfs-provisioner:v2.2.2 
     - docker pull  sonobuoy/systemd-logs:v0.3    
 
-    - docker save $(docker images -qa) -o all-in-one.tar
+    - docker save $(docker images |grep -v REPOSITORY |awk '{print $1":"$2}') -o all-in-one.tar
     
     - docker build wise2c/conformance:all-in-one .
+    - docker tag wise2c/conformance:all-in-one registry.cn-shenzhen.aliyuncs.com/conformance/conformance:all-in-one
     
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
     - docker push wise2c/conformance:all-in-one
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/conformance:all-in-one
     
   when: always
