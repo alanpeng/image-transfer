@@ -5,9 +5,7 @@ build_image:
   script:
     - apk add --no-cache curl wget bash bzip2
     - docker pull  k8s.gcr.io/conformance:v1.21.0 
-    - docker pull  k8s.gcr.io/conformance:v1.21.0 
     - docker pull  sonobuoy/sonobuoy:v0.50.0     
-    - docker pull  k8s.gcr.io/conformance:v1.21.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/nautilus:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/volume/gluster:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:2.0 
@@ -16,8 +14,6 @@ build_image:
     - docker pull  k8s.gcr.io/prometheus-to-sd:v0.5.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/resource-consumer:1.5 
     - docker pull  k8s.gcr.io/sd-dummy-exporter:v0.2.0 
-    # - docker pull  gcr.io/k8s-authenticated-test/agnhost:2.6 
-    # - docker pull  gcr.io/authenticated-image-pulling/alpine:3.7 
     - docker pull  gcr.io/kubernetes-e2e-test-images/jessie-dnsutils:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/volume/nfs:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/volume/rbd:1.0.1 
@@ -25,11 +21,9 @@ build_image:
     - docker pull  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/nonewprivs:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/sample-apiserver:1.17 
-    # - docker pull  invalid.com/invalid/alpine:3.1 
     - docker pull  gcr.io/kubernetes-e2e-test-images/ipc-utils:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/regression-issue-74839-amd64:1.0 
     - docker pull  k8s.gcr.io/e2e-test-images/agnhost:2.20 
-    # - docker pull  gcr.io/authenticated-image-pulling/windows-nanoserver:v1 
     - docker pull  k8s.gcr.io/etcd:3.4.13-0      
     - docker pull  gcr.io/kubernetes-e2e-test-images/echoserver:2.2 
     - docker pull  gcr.io/kubernetes-e2e-test-images/metadata-concealment:1.2 
@@ -40,15 +34,127 @@ build_image:
     - docker pull  k8s.gcr.io/sig-storage/nfs-provisioner:v2.2.2 
     - docker pull  sonobuoy/systemd-logs:v0.3    
 
-    - docker save $(docker images |grep -v REPOSITORY |awk '{print $1":"$2}') -o all-in-one.tar
-    
-    - docker build wise2c/conformance:all-in-one .
-    - docker tag wise2c/conformance:all-in-one registry.cn-shenzhen.aliyuncs.com/conformance/conformance:all-in-one
-    
+    - docker tag  k8s.gcr.io/conformance:v1.21.0 wise2c/conformance:v1.21.0
+    - docker tag  sonobuoy/sonobuoy:v0.50.0 wise2c/sonobuoy:v0.50.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/nautilus:1.0 wise2c/nautilus:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/gluster:1.0 wise2c/gluster:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:2.0 wise2c/cuda-vector-add:2.0
+    - docker tag  k8s.gcr.io/build-image/debian-iptables:v12.1.2 wise2c/debian-iptables:v12.1.2
+    - docker tag  k8s.gcr.io/prometheus-dummy-exporter:v0.1.0 wise2c/dummy-exporter:v0.1.0
+    - docker tag  k8s.gcr.io/prometheus-to-sd:v0.5.0 wise2c/prometheus-to-sd:v0.5.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/resource-consumer:1.5 wise2c/esource-consumer:1.5
+    - docker tag  k8s.gcr.io/sd-dummy-exporter:v0.2.0 wise2c/sd-dummy-exporter:v0.2.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/jessie-dnsutils:1.0 wise2c/jessie-dnsutils:1.0 
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/nfs:1.0 wise2c/nfs:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/rbd:1.0.1 wise2c/rbd:1.0.1
+    - docker tag  gcr.io/kubernetes-e2e-test-images/apparmor-loader:1.0 wise2c/apparmor-loader:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:1.0 wise2c/cuda-vector-add:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/nonewprivs:1.0 wise2c/nonewprivs:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/sample-apiserver:1.17 wise2c/sample-apiserver:1.17
+    - docker tag  gcr.io/kubernetes-e2e-test-images/ipc-utils:1.0 wise2c/ipc-utils:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/regression-issue-74839-amd64:1.0 wise2c/regression-issue-74839-amd64:1.0
+    - docker tag  k8s.gcr.io/e2e-test-images/agnhost:2.20 wise2c/agnhost:2.20
+    - docker tag  k8s.gcr.io/etcd:3.4.13-0 wise2c/etcd:3.4.13-0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/echoserver:2.2 wise2c/echoserver:2.2
+    - docker tag  gcr.io/kubernetes-e2e-test-images/metadata-concealment:1.2 wise2c/metadata-concealment:1.2
+    - docker tag  k8s.gcr.io/pause:3.2 wise2c/pause:3.2
+    - docker tag  gcr.io/kubernetes-e2e-test-images/nonroot:1.0 wise2c/nonroot:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/iscsi:2.0 wise2c/iscsi:2.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/kitten:1.0 wise2c/kitten:1.0
+    - docker tag  k8s.gcr.io/sig-storage/nfs-provisioner:v2.2.2 wise2c/nfs-provisioner:v2.2.2
+    - docker tag  sonobuoy/systemd-logs:v0.3 wise2c/systemd-logs:v0.3
+
+    - docker tag  k8s.gcr.io/conformance:v1.21.0 registry.cn-shenzhen.aliyuncs.com/conformance/conformance:v1.21.0
+    - docker tag  sonobuoy/sonobuoy:v0.50.0 registry.cn-shenzhen.aliyuncs.com/conformance/sonobuoy:v0.50.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/nautilus:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/nautilus:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/gluster:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/gluster:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:2.0 registry.cn-shenzhen.aliyuncs.com/conformance/cuda-vector-add:2.0
+    - docker tag  k8s.gcr.io/build-image/debian-iptables:v12.1.2 registry.cn-shenzhen.aliyuncs.com/conformance/debian-iptables:v12.1.2
+    - docker tag  k8s.gcr.io/prometheus-dummy-exporter:v0.1.0 registry.cn-shenzhen.aliyuncs.com/conformance/dummy-exporter:v0.1.0
+    - docker tag  k8s.gcr.io/prometheus-to-sd:v0.5.0 registry.cn-shenzhen.aliyuncs.com/conformance/prometheus-to-sd:v0.5.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/resource-consumer:1.5 registry.cn-shenzhen.aliyuncs.com/conformance/esource-consumer:1.5
+    - docker tag  k8s.gcr.io/sd-dummy-exporter:v0.2.0 registry.cn-shenzhen.aliyuncs.com/conformance/sd-dummy-exporter:v0.2.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/jessie-dnsutils:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/jessie-dnsutils:1.0 
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/nfs:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/nfs:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/rbd:1.0.1 registry.cn-shenzhen.aliyuncs.com/conformance/rbd:1.0.1
+    - docker tag  gcr.io/kubernetes-e2e-test-images/apparmor-loader:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/apparmor-loader:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/cuda-vector-add:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/nonewprivs:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/nonewprivs:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/sample-apiserver:1.17 registry.cn-shenzhen.aliyuncs.com/conformance/sample-apiserver:1.17
+    - docker tag  gcr.io/kubernetes-e2e-test-images/ipc-utils:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/ipc-utils:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/regression-issue-74839-amd64:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/regression-issue-74839-amd64:1.0
+    - docker tag  k8s.gcr.io/e2e-test-images/agnhost:2.20 registry.cn-shenzhen.aliyuncs.com/conformance/agnhost:2.20
+    - docker tag  k8s.gcr.io/etcd:3.4.13-0 registry.cn-shenzhen.aliyuncs.com/conformance/etcd:3.4.13-0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/echoserver:2.2 registry.cn-shenzhen.aliyuncs.com/conformance/echoserver:2.2
+    - docker tag  gcr.io/kubernetes-e2e-test-images/metadata-concealment:1.2 registry.cn-shenzhen.aliyuncs.com/conformance/metadata-concealment:1.2
+    - docker tag  k8s.gcr.io/pause:3.2 registry.cn-shenzhen.aliyuncs.com/conformance/pause:3.2
+    - docker tag  gcr.io/kubernetes-e2e-test-images/nonroot:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/nonroot:1.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/volume/iscsi:2.0 registry.cn-shenzhen.aliyuncs.com/conformance/iscsi:2.0
+    - docker tag  gcr.io/kubernetes-e2e-test-images/kitten:1.0 registry.cn-shenzhen.aliyuncs.com/conformance/kitten:1.0
+    - docker tag  k8s.gcr.io/sig-storage/nfs-provisioner:v2.2.2 registry.cn-shenzhen.aliyuncs.com/conformance/nfs-provisioner:v2.2.2
+    - docker tag  sonobuoy/systemd-logs:v0.3 registry.cn-shenzhen.aliyuncs.com/conformance/systemd-logs:v0.3    
+
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
+
+    - docker push wise2c/conformance:v1.21.0
+    - docker push wise2c/sonobuoy:v0.50.0
+    - docker push wise2c/nautilus:1.0
+    - docker push wise2c/gluster:1.0
+    - docker push wise2c/cuda-vector-add:2.0
+    - docker push wise2c/debian-iptables:v12.1.2
+    - docker push wise2c/dummy-exporter:v0.1.0
+    - docker push wise2c/prometheus-to-sd:v0.5.0
+    - docker push wise2c/esource-consumer:1.5
+    - docker push wise2c/sd-dummy-exporter:v0.2.0
+    - docker push wise2c/jessie-dnsutils:1.0 
+    - docker push wise2c/nfs:1.0
+    - docker push wise2c/rbd:1.0.1
+    - docker push wise2c/apparmor-loader:1.0
+    - docker push wise2c/cuda-vector-add:1.0
+    - docker push wise2c/nonewprivs:1.0
+    - docker push wise2c/sample-apiserver:1.17
+    - docker push wise2c/ipc-utils:1.0
+    - docker push wise2c/regression-issue-74839-amd64:1.0
+    - docker push wise2c/agnhost:2.20
+    - docker push wise2c/etcd:3.4.13-0
+    - docker push wise2c/echoserver:2.2
+    - docker push wise2c/metadata-concealment:1.2
+    - docker push wise2c/pause:3.2
+    - docker push wise2c/nonroot:1.0
+    - docker push wise2c/iscsi:2.0
+    - docker push wise2c/kitten:1.0
+    - docker push wise2c/nfs-provisioner:v2.2.2
+    - docker push wise2c/systemd-logs:v0.3
     
-    - docker push wise2c/conformance:all-in-one
-    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/conformance:all-in-one
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/conformance:v1.21.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/sonobuoy:v0.50.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/nautilus:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/gluster:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/cuda-vector-add:2.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/debian-iptables:v12.1.2
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/dummy-exporter:v0.1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/prometheus-to-sd:v0.5.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/esource-consumer:1.5
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/sd-dummy-exporter:v0.2.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/jessie-dnsutils:1.0 
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/nfs:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/rbd:1.0.1
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/apparmor-loader:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/cuda-vector-add:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/nonewprivs:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/sample-apiserver:1.17
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/ipc-utils:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/regression-issue-74839-amd64:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/agnhost:2.20
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/etcd:3.4.13-0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/echoserver:2.2
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/metadata-concealment:1.2
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/pause:3.2
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/nonroot:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/iscsi:2.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/kitten:1.0
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/nfs-provisioner:v2.2.2
+    - docker push registry.cn-shenzhen.aliyuncs.com/conformance/systemd-logs:v0.3
     
   when: always
