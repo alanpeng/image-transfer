@@ -16,7 +16,7 @@ build_image:
     - docker pull  k8s.gcr.io/prometheus-to-sd:v0.5.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/resource-consumer:1.5 
     - docker pull  k8s.gcr.io/sd-dummy-exporter:v0.2.0 
-    - docker pull  gcr.io/k8s-authenticated-test/agnhost:2.6 
+    # - docker pull  gcr.io/k8s-authenticated-test/agnhost:2.6 
     - docker pull  gcr.io/authenticated-image-pulling/alpine:3.7 
     - docker pull  gcr.io/kubernetes-e2e-test-images/jessie-dnsutils:1.0 
     - docker pull  gcr.io/kubernetes-e2e-test-images/volume/nfs:1.0 
