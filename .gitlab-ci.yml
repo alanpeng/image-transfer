@@ -4,11 +4,48 @@ build_image:
     - docker:dind
   script:
     - apk add --no-cache curl wget bash bzip2
-    - wget https://github.com/vmware-tanzu/sonobuoy/releases/download/v0.50.0/sonobuoy_0.50.0_linux_amd64.tar.gz
-    - tar zxvf sonobuoy_0.50.0_linux_amd64.tar.gz
-    - cp sonobuoy /usr/local/bin/
-    - chmod +x /usr/local/bin/sonobuoy
-    - sonobuoy images pull
+    - docker pull  k8s.gcr.io/conformance:v1.21.0 
+    - docker pull  k8s.gcr.io/conformance:v1.21.0 
+    - docker pull  sonobuoy/sonobuoy:v0.50.0     
+    - docker pull  k8s.gcr.io/conformance:v1.21.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/nautilus:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/volume/gluster:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:2.0 
+    - docker pull  k8s.gcr.io/build-image/debian-iptables:v12.1.2 
+    - docker pull  k8s.gcr.io/prometheus-dummy-exporter:v0.1.0 
+    - docker pull  k8s.gcr.io/prometheus-to-sd:v0.5.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/resource-consumer:1.5 
+    - docker pull  k8s.gcr.io/sd-dummy-exporter:v0.2.0 
+    - docker pull  gcr.io/k8s-authenticated-test/agnhost:2.6 
+    - docker pull  gcr.io/authenticated-image-pulling/alpine:3.7 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/jessie-dnsutils:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/volume/nfs:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/volume/rbd:1.0.1 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/apparmor-loader:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/cuda-vector-add:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/nonewprivs:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/sample-apiserver:1.17 
+    - docker pull  invalid.com/invalid/alpine:3.1 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/ipc-utils:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/regression-issue-74839-amd64:1.0 
+    - docker pull  k8s.gcr.io/e2e-test-images/agnhost:2.20 
+    - docker pull  gcr.io/authenticated-image-pulling/windows-nanoserver:v1 
+    - docker pull  k8s.gcr.io/etcd:3.4.13-0      
+    - docker pull  gcr.io/kubernetes-e2e-test-images/echoserver:2.2 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/metadata-concealment:1.2 
+    - docker pull  k8s.gcr.io/pause:3.2          
+    - docker pull  gcr.io/kubernetes-e2e-test-images/nonroot:1.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/volume/iscsi:2.0 
+    - docker pull  gcr.io/kubernetes-e2e-test-images/kitten:1.0 
+    - docker pull  k8s.gcr.io/sig-storage/nfs-provisioner:v2.2.2 
+    - docker pull  sonobuoy/systemd-logs:v0.3    
+
+    - docker save $(docker images -qa) -o all-in-one.tar
+    
+    - docker build wise2c/conformance:all-in-one .
+    
     - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.cn-shenzhen.aliyuncs.com
+    - docker push wise2c/conformance:all-in-one
+    
   when: always
